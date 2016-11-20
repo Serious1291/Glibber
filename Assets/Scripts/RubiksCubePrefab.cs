@@ -8,16 +8,15 @@ public class RubiksCubePrefab : MonoBehaviour {
 
     public RubiksCube RC;
     public GameObject CubeBrickPrefab;
-    public GameObject parentCube;
     public float spacing = 1.05f;
 
-    Vector3 cameraResetPos = new Vector3(5.5f, 3, -1.5f);
+    Vector3 cameraResetPos = new Vector3(4.4f, 3.6f, -4.1f);
 
     // Use this for initialization
     void Start () {
 
         Camera.main.transform.position = cameraResetPos;
-        Camera.main.transform.rotation = Quaternion.Euler(22, -71, 0);
+        Camera.main.transform.rotation = Quaternion.Euler(26, -24.6f, 0);
         //Camera.main.transform.LookAt(this.transform.position);
 
         initCube();
@@ -48,9 +47,12 @@ public class RubiksCubePrefab : MonoBehaviour {
                     cubeBrickPrefab.transform.SetParent(transform.parent);
                     cubeBrickPrefab.transform.position = new Vector3(x, y, z) * spacing;
 
-                    //cubePrefab.transform.SetParent(transform);
+                    //Debug.Log(cubeBrickPrefab.GetComponent<Renderer>());
+                    GameObject childOne = cubeBrickPrefab.transform.GetChild(0).gameObject;
+                    Renderer rend = childOne.GetComponent<Renderer>();
 
-
+                    rend.enabled = true;
+                    rend.material.color = CubeBrick.GREENCOLOR;
                     PrefabColumn.Add(cubeBrickPrefab);
                     
                 }

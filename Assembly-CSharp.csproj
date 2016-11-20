@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}</ProjectGuid>
+    <ProjectGuid>{D91DDB29-B80C-0361-1526-32761AF61CAC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -45,10 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraRotations.cs" />
+     <Compile Include="Assets\Scripts\CameraTrigger.cs" />
      <Compile Include="Assets\Scripts\CubeBrick.cs" />
      <Compile Include="Assets\Scripts\CubeBrickPrefab.cs" />
-     <Compile Include="Assets\Scripts\EventTriggerDelegate.cs" />
      <Compile Include="Assets\Scripts\RubiksCube.cs" />
      <Compile Include="Assets\Scripts\RubiksCubePrefab.cs" />
  <Reference Include="UnityEngine.UI">

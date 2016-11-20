@@ -13,7 +13,6 @@ public class CubeBrickPrefab : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            Debug.Log(panels.Count);
             Renderer rend = panels[i].GetComponent<Renderer>();
             rend.enabled = true;
             rend.material.color = c.getColors()[i];
