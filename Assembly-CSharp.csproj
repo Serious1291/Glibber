@@ -50,6 +50,8 @@
      <Compile Include="Assets\Scripts\CubeBrickPrefab.cs" />
      <Compile Include="Assets\Scripts\RubiksCube.cs" />
      <Compile Include="Assets\Scripts\RubiksCubePrefab.cs" />
+     <Compile Include="Assets\Scripts\RubiksMenuScript.cs" />
+     <Compile Include="Assets\Scripts\StartMenuScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

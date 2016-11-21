@@ -21,6 +21,13 @@ public class CameraTrigger : MonoBehaviour
 
     void Update()
     {
+
+        // esc for calling the menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.LoadLevel(2);
+        }
+
         int zoomChange = 0;
 
         if (Input.GetButton("Fire2")) { 
