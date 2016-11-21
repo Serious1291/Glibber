@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class CameraTrigger : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class CameraTrigger : MonoBehaviour
         // esc for calling the menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.LoadLevel(2);
+            SceneManager.LoadScene(2);
         }
 
         int zoomChange = 0;
