@@ -17,8 +17,6 @@ public class RubiksCubePrefab : MonoBehaviour {
     List<Color> staticColorList = new List<Color>(new Color[] { REDCOLOR, BLUECOLOR, GREENCOLOR, ORANGECOLOR, YELLOWCOLOR, WHITECOLOR });
 
 
-
-
     private List<List<List<GameObject>>> cubeBrickPrefabMatrix;
 
     public RubiksCube RC;
@@ -45,7 +43,8 @@ public class RubiksCubePrefab : MonoBehaviour {
 
     private void initCube()
     {
-        RC = new RubiksCube();
+        //RC = new RubiksCube();
+        int actualCubeNumber = 0;
 
         cubeBrickPrefabMatrix = new List<List<List<GameObject>>>();
         for (int x = 0; x < 3; x++)
@@ -57,15 +56,22 @@ public class RubiksCubePrefab : MonoBehaviour {
                 for (int z = 0; z < 3; z++)
                 {
                     //Instantiate(CubeBrickPrefab, new Vector3(x + 0.5f,y + 0.5f,z +0.5f), Quaternion.identity);
-                    
+
                     GameObject cubeBrickPrefab = Instantiate(CubeBrickPrefab, Vector3.zero, Quaternion.identity) as GameObject;
                     cubeBrickPrefab.transform.SetParent(transform.parent);
                     cubeBrickPrefab.transform.position = new Vector3(x, y, z) * spacing;
 
+                    if (actualCubeNumber == 14)
+                    {
+                        CameraTrigger.cameraObject= cubeBrickPrefab.transform;
+                    }
+
                     setColorForBrickPrefab(cubeBrickPrefab);
 
                     PrefabColumn.Add(cubeBrickPrefab);
-                    
+                    actualCubeNumber++;
+
+
                 }
                 PrefabRow.Add(PrefabColumn);
             }
