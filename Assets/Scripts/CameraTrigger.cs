@@ -6,6 +6,7 @@ public class CameraTrigger : MonoBehaviour
 {
 
     public static Transform cameraObject;
+    private static Vector3 resetCameraVector = new Vector3(26, -24.6f, 0.0f);
 
     // used for look around with mouse2
     private float y = 0.0f;
@@ -165,6 +166,12 @@ public class CameraTrigger : MonoBehaviour
 
         Camera.main.transform.LookAt(cameraObject);
 
+    }
+
+    public static void resetCamera()
+    {
+        Camera.main.transform.position = resetCameraVector;
+        Camera.main.transform.LookAt(cameraObject);
     }
 
 }
