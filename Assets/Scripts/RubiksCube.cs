@@ -9,7 +9,7 @@ public class RubiksCube
     public List<List<List<CubeBrick>>> cubeMatrix;
 
     // Use this for initialization
-
+    /*
     public RubiksCube(List<List<List<CubeBrick>>> cubeBrickMatrix)
     {
         this.cubeMatrix = cubeBrickMatrix;
@@ -24,24 +24,7 @@ public class RubiksCube
 
     }
     
-    /*
-    for (int i = 0; i< 3; i++)
-        {
-            for (int j = 0; j< 3; j++)
-            {
-                cubeMatrix[i][j][0].setSideColor(CubeBrick.sides.FRONT, CubeBrick.REDCOLOR);
-    cubeMatrix[2][i][j].setSideColor(CubeBrick.sides.RIGHT, CubeBrick.BLUECOLOR);
-    cubeMatrix[0][i][j].setSideColor(CubeBrick.sides.LEFT, CubeBrick.GREENCOLOR);
-    cubeMatrix[i][j][2].setSideColor(CubeBrick.sides.BACK, CubeBrick.ORANGECOLOR);
-    cubeMatrix[i][2][j].setSideColor(CubeBrick.sides.TOP, CubeBrick.WHITECOLOR);
-    cubeMatrix[i][0][j].setSideColor(CubeBrick.sides.BOTTOM, CubeBrick.YELLOWCOLOR);
-}
-        }
-        cubeMatrix[1][1][1].setAllSideColors(CubeBrick.BLACKCOLOR);
-*/
-
-    /*
-
+    */
     public RubiksCube()
     {
 
@@ -82,7 +65,7 @@ public class RubiksCube
         cubeMatrix[1][1][1].setAllSideColors(CubeBrick.BLACKCOLOR);
     }
 
-    */
+    
 
 }
 

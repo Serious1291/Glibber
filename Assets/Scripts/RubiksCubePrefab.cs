@@ -4,6 +4,21 @@ using System.Collections.Generic;
 
 public class RubiksCubePrefab : MonoBehaviour {
 
+
+    public enum sides { FRONT = 0, LEFT = 1, BACK = 2, RIGHT = 3, TOP = 4, BOTTOM = 5 };
+    public static Color REDCOLOR { get { return Color.red; } }
+    public static Color BLUECOLOR { get { return Color.blue; } }
+    public static Color GREENCOLOR { get { return Color.green; } }
+    public static Color ORANGECOLOR { get { return new Color(1.0f, 0.5f, 0.0f); } }
+    public static Color YELLOWCOLOR { get { return Color.yellow; } }
+    public static Color WHITECOLOR { get { return Color.white; } }
+    public static Color BLACKCOLOR { get { return Color.black; } }
+    List<Color> colors = new List<Color>();
+    List<Color> staticColorList = new List<Color>(new Color[] { REDCOLOR, BLUECOLOR, GREENCOLOR, ORANGECOLOR, YELLOWCOLOR, WHITECOLOR });
+
+
+
+
     private List<List<List<GameObject>>> cubeBrickPrefabMatrix;
 
     public RubiksCube RC;
@@ -30,7 +45,7 @@ public class RubiksCubePrefab : MonoBehaviour {
 
     private void initCube()
     {
-        //RC = new RubiksCube();
+        RC = new RubiksCube();
 
         cubeBrickPrefabMatrix = new List<List<List<GameObject>>>();
         for (int x = 0; x < 3; x++)
@@ -47,12 +62,8 @@ public class RubiksCubePrefab : MonoBehaviour {
                     cubeBrickPrefab.transform.SetParent(transform.parent);
                     cubeBrickPrefab.transform.position = new Vector3(x, y, z) * spacing;
 
-                    //Debug.Log(cubeBrickPrefab.GetComponent<Renderer>());
-                    GameObject childOne = cubeBrickPrefab.transform.GetChild(0).gameObject;
-                    Renderer rend = childOne.GetComponent<Renderer>();
+                    setColorForBrickPrefab(cubeBrickPrefab);
 
-                    rend.enabled = true;
-                    rend.material.color = CubeBrick.GREENCOLOR;
                     PrefabColumn.Add(cubeBrickPrefab);
                     
                 }
@@ -62,6 +73,35 @@ public class RubiksCubePrefab : MonoBehaviour {
         
         }
 
+    }
+
+    // sets initialise the colors for the cube!
+    private void setColorForBrickPrefab(GameObject cubeBrickPrefab)
+    {
+
+        int listCounter = 0;
+        foreach (Transform ts in cubeBrickPrefab.transform)
+        {
+            Renderer rend = ts.GetComponent<Renderer>();
+            rend.enabled = true;
+            rend.material.color = staticColorList[listCounter];
+            listCounter++;
+        }
+    }
+
+
+
+    public void setSideColors(List<Color> colors)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            setSideColor((sides)i, colors[i]);
+        }
+    }
+
+    public void setSideColor(sides side, Color c)
+    {
+        colors[(int)side] = c;
     }
 
 
