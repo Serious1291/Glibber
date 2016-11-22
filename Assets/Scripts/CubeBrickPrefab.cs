@@ -13,11 +13,22 @@ public class CubeBrickPrefab : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            Debug.Log("blalbl");
             Renderer rend = panels[i].GetComponent<Renderer>();
             rend.enabled = true;
             rend.material.color = c.getColors()[i];
         }
     }
+
+    void OnMouseDown()
+    {
+        //Debug.Log("Hallo");
+    }
+
+    void update()
+    {
+
+    }
+
+
 }
 

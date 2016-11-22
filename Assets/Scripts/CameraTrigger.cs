@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class CameraTrigger : MonoBehaviour
 {
 
-    public static Transform cameraObject;
+    public static GameObject cameraObject;
     private static Vector3 resetCameraVector = new Vector3(26, -24.6f, 0.0f);
 
     // used for look around with mouse2
@@ -29,6 +29,7 @@ public class CameraTrigger : MonoBehaviour
     // speed for camera movements at keybindings
     private int cameraSpeed = 100;
 
+
     void Start()
     {
         // important that the camera is not reseted 
@@ -50,6 +51,7 @@ public class CameraTrigger : MonoBehaviour
         {
             tmpVector.x = maxX;
         }
+
         return tmpVector;
 
     }
@@ -103,16 +105,22 @@ public class CameraTrigger : MonoBehaviour
             tmpVector = setY(tmpVector, mouseY);
 
             Camera.main.transform.position = tmpVector;
+            Camera.main.transform.LookAt(cameraObject.transform);
+
         }
 
+        /*
         if (Input.GetButton("Fire2"))
         {
             y += 2.0f * Input.GetAxis("Mouse X");
             x -= 2.0f * Input.GetAxis("Mouse Y");
 
+
+
             Camera.main.transform.rotation = Quaternion.Euler(x, y, 0.0f);
 
         }
+        */
 
         // fov
 
@@ -121,57 +129,79 @@ public class CameraTrigger : MonoBehaviour
         if (delta < 0)
         {
             // make sure the current FOV is within min values
-            if (Camera.main.fieldOfView + delta > minFOV-1)
+            if (Camera.main.fieldOfView + delta > minFOV - 1)
             {
                 Camera.main.fieldOfView = Camera.main.fieldOfView + delta;
             }
+            Camera.main.transform.LookAt(cameraObject.transform);
         }
         // zoom out
         else if (delta > 0)
         {
             // make sure the current FOV is within max values
-            if (Camera.main.fieldOfView + delta < maxFOV+1)
+            if (Camera.main.fieldOfView + delta < maxFOV + 1)
             {
                 Camera.main.fieldOfView = Camera.main.fieldOfView + delta;
             }
+            Camera.main.transform.LookAt(cameraObject.transform);
         }
 
 
         // define way around cube:
-        
+
 
         // move left and right and top and bot
         // this is not smooth if the camera is moved around 30-40°
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.RotateAround(cameraObject.transform.position, Vector3.up, cameraSpeed * Time.deltaTime);
-            //transform.Translate(Vector3.right * -Time.deltaTime * zoomSpeed);
+            moveLeft();
+            Camera.main.transform.LookAt(cameraObject.transform);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.RotateAround(cameraObject.transform.position, Vector3.down, cameraSpeed * Time.deltaTime);
-            //transform.Translate(Vector3.right * Time.deltaTime * zoomSpeed);
+            moveRight();
+            Camera.main.transform.LookAt(cameraObject.transform);
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.RotateAround(cameraObject.transform.position, Vector3.right, cameraSpeed * Time.deltaTime);
-            //transform.Translate(Vector3.up * Time.deltaTime * zoomSpeed);
+            moveUp();
+            Camera.main.transform.LookAt(cameraObject.transform);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.RotateAround(cameraObject.transform.position, Vector3.left, cameraSpeed * Time.deltaTime);
-            //transform.Translate(Vector3.down * Time.deltaTime * zoomSpeed);
+            moveDown();
+            Camera.main.transform.LookAt(cameraObject.transform);
         }
 
-        Camera.main.transform.LookAt(cameraObject);
+        
 
     }
+
+
+    private void moveLeft()
+    {
+        transform.RotateAround(cameraObject.transform.position, Vector3.up, cameraSpeed * Time.deltaTime);
+    }
+    private void moveRight()
+    {
+        transform.RotateAround(cameraObject.transform.position, Vector3.down, cameraSpeed * Time.deltaTime);
+    }
+    private void moveUp()
+    {
+        transform.RotateAround(cameraObject.transform.position, Vector3.right, cameraSpeed * Time.deltaTime);
+    }
+    private void moveDown()
+    {
+        transform.RotateAround(cameraObject.transform.position, Vector3.left, cameraSpeed * Time.deltaTime);
+    }
+
+
 
     public static void resetCamera()
     {
         Camera.main.transform.position = resetCameraVector;
-        Camera.main.transform.LookAt(cameraObject);
+        Camera.main.transform.LookAt(cameraObject.transform);
     }
 
 }

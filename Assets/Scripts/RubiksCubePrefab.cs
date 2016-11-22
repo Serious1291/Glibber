@@ -17,7 +17,7 @@ public class RubiksCubePrefab : MonoBehaviour {
     List<Color> staticColorList = new List<Color>(new Color[] { REDCOLOR, BLUECOLOR, GREENCOLOR, ORANGECOLOR, YELLOWCOLOR, WHITECOLOR });
 
 
-    private List<List<List<GameObject>>> cubeBrickPrefabMatrix;
+    public static List<List<List<GameObject>>> cubeBrickPrefabMatrix;
 
     public RubiksCube RC;
     public GameObject CubeBrickPrefab;
@@ -38,12 +38,12 @@ public class RubiksCubePrefab : MonoBehaviour {
 
     void Update()
     {
-        //RefreshPanels();
+        RefreshPanels();
     }
 
     private void initCube()
     {
-        //RC = new RubiksCube();
+        RC = new RubiksCube();
         int actualCubeNumber = 0;
 
         cubeBrickPrefabMatrix = new List<List<List<GameObject>>>();
@@ -58,15 +58,18 @@ public class RubiksCubePrefab : MonoBehaviour {
                     //Instantiate(CubeBrickPrefab, new Vector3(x + 0.5f,y + 0.5f,z +0.5f), Quaternion.identity);
 
                     GameObject cubeBrickPrefab = Instantiate(CubeBrickPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+                    
                     cubeBrickPrefab.transform.SetParent(transform.parent);
                     cubeBrickPrefab.transform.position = new Vector3(x, y, z) * spacing;
 
+                    // used for set the main Object, the camera will lookAt
                     if (actualCubeNumber == 14)
                     {
-                        CameraTrigger.cameraObject= cubeBrickPrefab.transform;
+                        CameraTrigger.cameraObject= cubeBrickPrefab;
                     }
+                    //Debug.Log(cubeBrickPrefab.GetInstanceID());
 
-                    setColorForBrickPrefab(cubeBrickPrefab);
+                    //setColorForBrickPrefab(cubeBrickPrefab);
 
                     PrefabColumn.Add(cubeBrickPrefab);
                     actualCubeNumber++;

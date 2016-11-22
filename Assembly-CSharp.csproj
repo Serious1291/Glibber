@@ -49,6 +49,8 @@
      <Compile Include="Assets\Scripts\CameraTrigger.cs" />
      <Compile Include="Assets\Scripts\CubeBrick.cs" />
      <Compile Include="Assets\Scripts\CubeBrickPrefab.cs" />
+     <Compile Include="Assets\Scripts\CubeBrickPrefabPanelScript.cs" />
+     <Compile Include="Assets\Scripts\MatrixClass.cs" />
      <Compile Include="Assets\Scripts\RubiksCube.cs" />
      <Compile Include="Assets\Scripts\RubiksCubePrefab.cs" />
      <Compile Include="Assets\Scripts\RubiksMenuScript.cs" />
