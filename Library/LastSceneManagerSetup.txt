@@ -1,8 +1,12 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/MainMenu.unity
 =======
 - path: Assets/RubiksFrame.unity
 >>>>>>> nothing
+=======
+- path: Assets/RubiksFrame.unity
+>>>>>>> added rotation vertical and horizontal - without combination
   isLoaded: 1
   isActive: 1
