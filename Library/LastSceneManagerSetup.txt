@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/MainMenu.unity
+=======
+- path: Assets/RubiksFrame.unity
+>>>>>>> nothing
   isLoaded: 1
   isActive: 1
